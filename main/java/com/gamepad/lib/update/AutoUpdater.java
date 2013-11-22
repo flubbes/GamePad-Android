@@ -6,12 +6,6 @@ import android.util.Log;
 
 import com.gamepad.MainActivity;
 import com.gamepad.R;
-
-<<<<<<< HEAD
-=======
-
->>>>>>> e19785d0472ece22641429423d1f716b744b73a8
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;

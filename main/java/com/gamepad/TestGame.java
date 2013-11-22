@@ -1,6 +1,8 @@
 package com.gamepad;
 
 import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
 
 import com.gamepad.lib.forms.Point;
 import com.gamepad.lib.forms.Size;
@@ -31,6 +33,5 @@ public class TestGame implements Game
 
     @Override
     public void unload() {
-
     }
 }
