@@ -42,6 +42,7 @@ public class Join implements PacketEvent
                 return lob;
             }
         }
+        return null;
     }
 
     public Lobby getCurrentLobby()

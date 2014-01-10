@@ -57,4 +57,6 @@ public class HostActivity extends Activity
         Intent intent = new Intent(this, LobbyActivity.class);
         startActivity(intent);
     }
+
+
 }
