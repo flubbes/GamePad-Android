@@ -61,7 +61,7 @@ public class Join implements PacketEvent
         while(pIt.hasNext())
         {
             Lobby cur = pIt.next();
-            if(cur.getHostIp().equals(lobby.getHostIp()))
+            if(cur.getName().equals(lobby.getName()))
             {
                 return true;
             }

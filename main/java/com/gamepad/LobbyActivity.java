@@ -1,37 +1,21 @@
 package com.gamepad;
 
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.LayoutInflater;
+import android.util.DisplayMetrics;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ExpandableListView;
+import android.widget.ExpandableListView.OnChildClickListener;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.gamepad.lib.GPC;
 import com.gamepad.lib.game.Lobby;
 import com.gamepad.lib.game.LobbyPlayer;
 
 import java.util.ArrayList;
-import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
-
-import com.gamepad.ExpandableListAdapter;
-
-import android.app.Activity;
-import android.os.Bundle;
-import android.util.DisplayMetrics;
-import android.view.Menu;
-import android.view.View;
-import android.widget.ExpandableListView;
-import android.widget.ExpandableListView.OnChildClickListener;
-import android.widget.Toast;
 
 /**
  * Created by Fabian on 04.01.14.
@@ -40,7 +24,7 @@ public class LobbyActivity extends MainActivity
 {
     private ListView lvNetworkDebug;
     private ArrayList<String> clients;
-    private String[] players;
+    private String[] laptops;
 
     List<String> groupList;
     List<String> childList;
@@ -69,18 +53,32 @@ public class LobbyActivity extends MainActivity
         setContentView(R.layout.activity_lobby);
 
         //Fake lobby maken
-        Lobby lobby = new Lobby();
-        LobbyPlayer sander = new LobbyPlayer();
-        sander.setName("sander");
-        lobby.setGameName("Fake poker lobby");
-        lobby.setName("sander is een tokkie");
-        lobby.addPlayer(sander);
-        GPC.getJoin().addLobby(lobby);
 
+        Lobby lobbyTokkie = new Lobby();
+        LobbyPlayer Tokkie = new LobbyPlayer();
+        LobbyPlayer Tosti = new LobbyPlayer();
+        Tokkie.setName("Tokkie");
+        Tosti.setName("Tosti");
+        lobbyTokkie.setGameName("Gabbertjee!");
+        lobbyTokkie.setName("Is het een tokkie of gewoon een dik wijf");
+        lobbyTokkie.addPlayer(Tokkie);
+        lobbyTokkie.addPlayer(Tosti);
+        GPC.getJoin().addLobby(lobbyTokkie);
+
+        Lobby lobby2 = new Lobby();
+        LobbyPlayer Panchito = new LobbyPlayer();
+        LobbyPlayer Panchito2 = new LobbyPlayer();
+        Panchito.setName("Panpanchito");
+        Panchito2.setName("Beunhaas");
+        lobby2.setGameName("twister");
+        lobby2.setName("Salty dog");
+        lobby2.addPlayer(Panchito);
+        lobby2.addPlayer(Panchito2);
+        GPC.getJoin().addLobby(lobby2);
 
         createGroupList();
 
-       // createCollection();
+        createCollection();
 
         expListView = (ExpandableListView) findViewById(R.id.laptop_list);
         final ExpandableListAdapter expListAdapter = new ExpandableListAdapter(
@@ -112,7 +110,6 @@ public class LobbyActivity extends MainActivity
             String lobbyName = lobby.getName();
             groupList.add(lobbyName);
         }
-        groupList.add("HP");
      }
 
     private void createCollection()
@@ -124,10 +121,11 @@ public class LobbyActivity extends MainActivity
             ArrayList<LobbyPlayer> test = new ArrayList<LobbyPlayer>();
 
             test = lobby.getPlayers();
-
+            String temp = "";
             for(int p = 0; p < test.size();p++)
             {
-                players[p]=(test.get(p).getName());
+                temp += test.get(p).getName() + ",";
+                laptops = temp.split(",");
             }
 
             laptopCollection = new LinkedHashMap<String, List<String>>();
@@ -138,7 +136,7 @@ public class LobbyActivity extends MainActivity
                 {
                     for(int p = 0; p < test.size();p++)
                     {
-                        loadChild(players);
+                        loadChild(laptops);
                     }
                 }
 
