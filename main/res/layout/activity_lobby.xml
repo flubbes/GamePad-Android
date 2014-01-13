@@ -6,10 +6,30 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity" >
 
+   <LinearLayout android:id="@+id/linear1"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/background_dark"
+    android:gravity="center" >
+
+       <TextView
+           android:id="@+id/text_intro"
+           android:textSize="20sp"
+           android:layout_width="wrap_content"
+           android:layout_height="50dp"
+           android:gravity="center_vertical|center_horizontal"
+           android:textColor = "#FFFFFF"
+           android:text="Kies een lobby" />
+
     <ExpandableListView
         android:id="@+id/laptop_list"
         android:layout_width="match_parent"
-        android:layout_height="fill_parent" >
+        android:layout_height="fill_parent">
+
     </ExpandableListView>
+
+
+    </LinearLayout>
 
 </RelativeLayout>

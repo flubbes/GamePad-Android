@@ -46,38 +46,12 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter
         final String laptop = (String) getChild(groupPosition, childPosition);
         LayoutInflater inflater = context.getLayoutInflater();
 
-        if (convertView == null) {
+        if (convertView == null)
+        {
             convertView = inflater.inflate(R.layout.child_item, null);
         }
 
-        TextView item = (TextView) convertView.findViewById(R.id.laptop);
-
-        ImageView delete = (ImageView) convertView.findViewById(R.id.delete);
-        delete.setOnClickListener(new OnClickListener() {
-
-            public void onClick(View v) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(context);
-                builder.setMessage("Do you want to remove?");
-                builder.setCancelable(false);
-                builder.setPositiveButton("Yes",
-                        new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id) {
-                                List<String> child =
-                                        lobbyCollections.get(laptops.get(groupPosition));
-                                child.remove(childPosition);
-                                notifyDataSetChanged();
-                            }
-                        });
-                builder.setNegativeButton("No",
-                        new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id) {
-                                dialog.cancel();
-                            }
-                        });
-                AlertDialog alertDialog = builder.create();
-                alertDialog.show();
-            }
-        });
+       TextView item = (TextView) convertView.findViewById(R.id.laptop);
 
         item.setText(laptop);
         return convertView;
